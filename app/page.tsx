@@ -226,104 +226,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Schedule Section */}
-        <section className="flex min-h-screen w-full flex-col justify-center px-6 py-24 md:px-12">
-          <div className="max-w-4xl">
-            <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <h2 className="font-sans text-5xl md:text-6xl font-bold text-foreground mb-4">Event Schedule</h2>
-              <p className="text-lg text-foreground/80">Two days packed with learning and opportunity</p>
-            </div>
-
-            <div className="space-y-8">
-              {/* Day 1 */}
-              <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary/20 border border-secondary/50">
-                    <span className="font-bold text-secondary">1</span>
-                  </div>
-                  <div>
-                    <h3 className="font-sans text-2xl md:text-3xl font-bold text-secondary">
-                      Day One: Training & Mentorship
-                    </h3>
-                    <p className="text-foreground/70 text-sm md:text-base">
-                      Master the fundamentals and connect with industry experts
-                    </p>
-                  </div>
-                </div>
-                <div className="ml-8 space-y-3 border-l border-secondary/30 pl-6">
-                  <div>
-                    <p className="font-mono text-xs text-secondary/80">09:00 AM</p>
-                    <p className="font-sans text-foreground font-semibold">Opening Keynote & Welcome</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-secondary/80">10:30 AM</p>
-                    <p className="font-sans text-foreground font-semibold">
-                      Master Classes: Product, Fundraising & Growth
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-secondary/80">01:00 PM</p>
-                    <p className="font-sans text-foreground font-semibold">Networking Lunch</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-secondary/80">02:30 PM</p>
-                    <p className="font-sans text-foreground font-semibold">Breakout Sessions & Mentorship</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-secondary/80">06:00 PM</p>
-                    <p className="font-sans text-foreground font-semibold">Evening Mixer & Networking</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Day 2 */}
-              <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 border border-primary/50">
-                    <span className="font-bold text-primary">2</span>
-                  </div>
-                  <div>
-                    <h3 className="font-sans text-2xl md:text-3xl font-bold text-primary">
-                      Day Two: Pitch Competition
-                    </h3>
-                    <p className="text-foreground/70 text-sm md:text-base">
-                      Present your idea to investors and compete for prizes
-                    </p>
-                  </div>
-                </div>
-                <div className="ml-8 space-y-3 border-l border-primary/30 pl-6">
-                  <div>
-                    <p className="font-mono text-xs text-primary/80">09:00 AM</p>
-                    <p className="font-sans text-foreground font-semibold">Startup Expo & Speed Networking</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-primary/80">11:00 AM</p>
-                    <p className="font-sans text-foreground font-semibold">Pitch Competition Begins</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-primary/80">01:00 PM</p>
-                    <p className="font-sans text-foreground font-semibold">Lunch & Investor Meetings</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-primary/80">03:00 PM</p>
-                    <p className="font-sans text-foreground font-semibold">Final Round Pitches</p>
-                  </div>
-                  <div>
-                    <p className="font-mono text-xs text-primary/80">05:30 PM</p>
-                    <p className="font-sans text-foreground font-semibold">Awards Ceremony & Closing Reception</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Registration Section */}
         <section className="flex min-h-screen w-full flex-col justify-center px-6 py-24 md:px-12">
           <div className="max-w-2xl mx-auto w-full">
             <div className="mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
               <h2 className="font-sans text-5xl md:text-6xl font-bold text-foreground mb-4">Register Your Team</h2>
-              <p className="text-lg text-foreground/80">Submit your startup idea and join Zenith 2024</p>
+              <p className="text-lg text-foreground/80">Submit your startup idea and join Zenith 2026</p>
             </div>
 
             <form
