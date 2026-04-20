@@ -13,6 +13,12 @@ export default function Home() {
   const shaderContainerRef = useRef<HTMLDivElement>(null)
   const [submitted, setSubmitted] = useState(false)
   const [submitLabel, setSubmitLabel] = useState("Submit Registration")
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  })
 
   const [formData, setFormData] = useState({
     "team-name": "",
@@ -53,6 +59,28 @@ export default function Home() {
       clearInterval(intervalId)
       clearTimeout(fallbackTimer)
     }
+  }, [])
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const targetDate = new Date("2026-04-28T10:00:00").getTime()
+      const now = new Date().getTime()
+      const difference = targetDate - now
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60),
+        })
+      }
+    }
+
+    calculateTimeLeft()
+    const timer = setInterval(calculateTimeLeft, 1000)
+
+    return () => clearInterval(timer)
   }, [])
 
   const scrollToSection = (index: number) => {
@@ -158,25 +186,28 @@ export default function Home() {
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
-          {["About", "Schedule", "Register"].map((item, index) => (
+          {[
+            { label: "About", index: 0 },
+            { label: "Register", index: 1 }
+          ].map((item) => (
             <button
-              key={item}
-              onClick={() => scrollToSection(index)}
+              key={item.label}
+              onClick={() => scrollToSection(item.index)}
               className={`group relative font-sans text-sm font-medium transition-colors ${
-                currentSection === index ? "text-secondary" : "text-foreground/80 hover:text-foreground"
+                currentSection === item.index ? "text-secondary" : "text-foreground/80 hover:text-foreground"
               }`}
             >
-              {item}
+              {item.label}
               <span
                 className={`absolute -bottom-1 left-0 h-px bg-secondary transition-all duration-300 ${
-                  currentSection === index ? "w-full" : "w-0 group-hover:w-full"
+                  currentSection === item.index ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
             </button>
           ))}
         </div>
 
-        <MagneticButton variant="secondary" onClick={() => scrollToSection(2)}>
+        <MagneticButton variant="secondary" onClick={() => scrollToSection(1)}>
           Register Now
         </MagneticButton>
       </nav>
@@ -184,7 +215,7 @@ export default function Home() {
       {/* Sections Container */}
       <div
         ref={scrollContainerRef}
-        className={`relative z-10 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        className={`relative z-10 h-screen w-full overflow-y-scroll transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
       >
         {/* Hero Section */}
         <section className="flex min-h-screen w-full flex-col justify-center px-6 py-24 md:px-12">
@@ -207,12 +238,52 @@ export default function Home() {
               </span>
             </p>
             <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-              <MagneticButton size="lg" variant="primary" onClick={() => scrollToSection(2)}>
+
+              <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection(1)}>
                 Register Your Team
               </MagneticButton>
-              <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection(1)}>
-                View Schedule
-              </MagneticButton>
+            </div>
+          </div>
+
+          {/* Bottom Section with Countdown and Scroll Indicator */}
+          <div className="absolute bottom-40 md:bottom-24 left-1/2 -translate-x-1/2 w-full flex flex-col items-center animate-in fade-in duration-1000 delay-500">
+            {/* Countdown Timer */}
+            <div className="mb-12 flex flex-col items-center">
+              <p className="font-mono text-xs text-white mb-4 text-center">APRIL 27-28, 2026</p>
+              <div className="flex justify-center gap-2 md:gap-4">
+                <div className="flex flex-col items-center">
+                  <div className="rounded-lg border border-white/30 bg-white/10 backdrop-blur-md px-3 md:px-7 py-2 md:py-5 mb-2">
+                    <p className="font-sans text-xl md:text-2xl font-bold text-white">
+                      {String(timeLeft.days).padStart(2, "0")}
+                    </p>
+                  </div>
+                  <p className="font-mono text-xs text-white/60">Days</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="rounded-lg border border-white/30 bg-white/10 backdrop-blur-md px-3 md:px-7 py-2 md:py-5 mb-2">
+                    <p className="font-sans text-xl md:text-2xl font-bold text-white">
+                      {String(timeLeft.hours).padStart(2, "0")}
+                    </p>
+                  </div>
+                  <p className="font-mono text-xs text-white/60">Hours</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="rounded-lg border border-white/30 bg-white/10 backdrop-blur-md px-3 md:px-7 py-2 md:py-5 mb-2">
+                    <p className="font-sans text-xl md:text-2xl font-bold text-white">
+                      {String(timeLeft.minutes).padStart(2, "0")}
+                    </p>
+                  </div>
+                  <p className="font-mono text-xs text-white/60">Minutes</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="rounded-lg border border-white/30 bg-white/10 backdrop-blur-md px-3 md:px-7 py-2 md:py-5 mb-2">
+                    <p className="font-sans text-xl md:text-2xl font-bold text-white">
+                      {String(timeLeft.seconds).padStart(2, "0")}
+                    </p>
+                  </div>
+                  <p className="font-mono text-xs text-white/60">Seconds</p>
+                </div>
+              </div>
             </div>
           </div>
 
